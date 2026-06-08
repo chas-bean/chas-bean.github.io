@@ -25,6 +25,9 @@ HEADER = """<!DOCTYPE html>
 <body>
   <header class="chrome">
     <div class="chrome-track">
+      <div class="chrome-links">
+        <a href="https://linktr.ee/chas_bean" target="_blank" rel="noopener" title="Linktree — @chas_bean" aria-label="Linktree — @chas_bean">links</a>
+      </div>
       <nav class="theme-toggle" aria-label="Resume color theme">
         <button type="button" class="theme-btn" data-theme="crt" aria-label="Phosphor — green terminal" title="Phosphor — green terminal" aria-pressed="true">
           <span class="swatch" aria-hidden="true"></span><span class="theme-name">phosphor</span>
@@ -38,8 +41,7 @@ HEADER = """<!DOCTYPE html>
       </nav>
       <div class="actions">
         <span class="hint">pdf:</span>
-        <a id="open-link" href="resume-phosphor.html" target="_blank" rel="noopener">open</a>
-        <a id="pdf-link" href="resume-phosphor.pdf" target="_blank" rel="noopener">download</a>
+        <a id="pdf-link" href="resume-phosphor.pdf" download>download</a>
       </div>
     </div>
   </header>

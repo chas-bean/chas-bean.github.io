@@ -1,6 +1,6 @@
 /* Mobile layout — shared by index (live.css) and standalone theme pages */
 
-@media (max-width: 640px) {
+@media screen and (max-width: 640px) {
   .terminal,
   html.theme-live .terminal,
   html.theme-live[data-theme="crt"] .terminal,
@@ -86,7 +86,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media screen and (max-width: 400px) {
   html,
   body {
     font-size: 9.6px;

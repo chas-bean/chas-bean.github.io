@@ -16,6 +16,9 @@ for theme in phosphor slate paper; do
   pdf="$ROOT/resume-${theme}.pdf"
   echo "==> $pdf"
   "$CHROME" --headless --disable-gpu --no-pdf-header-footer \
+    --window-size=1280,1800 \
+    --run-all-compositor-stages-before-draw \
+    --virtual-time-budget=5000 \
     --print-to-pdf="$pdf" "file://$html"
 done
 

@@ -2,15 +2,14 @@
   "use strict";
 
   var THEMES = {
-    crt:    { html: "resume-phosphor.html", pdf: "resume-phosphor.pdf" },
-    github: { html: "resume-slate.html",    pdf: "resume-slate.pdf" },
-    paper:  { html: "resume-paper.html",  pdf: "resume-paper.pdf" }
+    crt:    { pdf: "resume-phosphor.pdf" },
+    github: { pdf: "resume-slate.pdf" },
+    paper:  { pdf: "resume-paper.pdf" }
   };
   var DEFAULT = "crt";
   var THEME_KEYS = Object.keys(THEMES);
 
   var root = document.documentElement;
-  var openLink = document.getElementById("open-link");
   var pdfLink = document.getElementById("pdf-link");
   var themeButtons = document.querySelectorAll(".theme-btn");
   var currentTheme = DEFAULT;
@@ -77,7 +76,6 @@
 
     var cfg = THEMES[theme];
     root.setAttribute("data-theme", theme);
-    openLink.href = cfg.html;
     pdfLink.href = cfg.pdf;
 
     for (var i = 0; i < themeButtons.length; i++) {
