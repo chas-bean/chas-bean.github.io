@@ -1,0 +1,25 @@
+RESUME — PARKED IDEAS & BACKLOG
+================================
+Things to revisit later (not blocking current work).
+
+DESIGN / STYLE
+- [ ] Try the exact oh-my-zsh arrow (➜ U+279C) in place of the current ➤ in the
+      role line. Compare both.
+- [ ] Add a faint "typed-then-autocompleted" hint line above the final mail
+      command (e.g. ghosted tab-completion suggestion).
+- [ ] v3 experiment: amber-monitor variant (swap --fg to #ffb000) as an
+      alternate theme file. Possibly also an "ice-blue" variant.
+- [ ] Consider a subtle ASCII/figlet banner option for the name.
+
+CONTENT / REVIEW
+- [ ] "Think as a reviewer" pass: critique each line as a hiring manager / ATS
+      screener would, after we've collected full role context.
+- [ ] Tailor focused variants per target role/company once we know what Chas is
+      exploring (e.g. AI-platform IC vs. founding-engineer vs. staff/lead).
+- [ ] Rebalance Vendr emphasis: lead with customer-facing, high-signal work
+      (multi-agent pricing, autonomous negotiation / "Ruth") over internal infra
+      (Stratus) unless targeting a platform/infra role.
+
+OPEN ITEMS / TO CONFIRM
+- [ ] Real LinkedIn URL (currently placeholder: linkedin.com/in/chasbean).
+- [ ] Flesh out IndustryStar description (currently thin).

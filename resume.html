@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chas Bean — Full-Stack &amp; AI Engineer</title>
+  <meta name="description" content="Chas Bean — Full-Stack & AI Engineer. AI applications, real-time systems, and developer platforms in TypeScript, React, and Node.js." />
+  <style>
+    /*
+      ============================================================
+      EDIT GUIDE  ::  GITHUB DARK (v30) — flagship resume.html
+      ------------------------------------------------------------
+      - Also: resume-slate.html (same theme) · resume-phosphor.html (green phosphor)
+      - Export PDF: open in Chrome -> Cmd+P -> "Save as PDF",
+        Margins "None", and ENABLE "Background graphics" (so the
+        dark CRT background prints). See README.md.
+      ============================================================
+    */
+    :root {
+      /* GitHub dark (Primer) tokens */
+      --bg:        #010409;   /* canvas inset            */
+      --bg-screen: #0d1117;   /* canvas default          */
+      --fg:        #c9d1d9;   /* body text               */
+      --fg-bright: #e6edf3;   /* emphasis                */
+      --fg-dim:    #8b949e;   /* muted                   */
+      --fg-faint:  #484f58;   /* subtle                  */
+      --amber:     #e3b341;   /* companies / skill keys  */
+      --cyan:      #79c0ff;   /* flags / code / paths    */
+      --rule:      #30363d;   /* borders                 */
+      --glow:      rgba(56, 139, 253, 0.22);
+      --link:      #4493f8;
+      --cmd-bar:   #161b22;   /* canvas subtle           */
+      --cmd-bar-edge: #30363d;
+      --cmd-inset: rgba(56, 139, 253, 0.06);
+      --link-underline: rgba(68, 147, 248, 0.35);
+      --code-bg:   rgba(56, 139, 253, 0.10);
+      --maxw:      820px;
+      --mono: "JetBrains Mono", "SF Mono", "SFMono-Regular", "Cascadia Code",
+              Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background:
+        radial-gradient(120% 120% at 50% 0%, #161b22 0%, #0d1117 65%, #010409 100%);
+      color: var(--fg);
+      font-family: var(--mono);
+      font-size: 10.1px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .terminal {
+      position: relative;
+      max-width: var(--maxw);
+      margin: 22px auto;
+      background: var(--bg-screen);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      box-shadow:
+        0 0 0 1px rgba(48,54,61,0.6),
+        0 0 32px rgba(56,139,253,0.06),
+        0 18px 60px rgba(0,0,0,0.55);
+      overflow: hidden;
+      text-shadow: none;
+    }
+
+    /* ---- window title bar ---- */
+    .titlebar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      background: linear-gradient(#161b22, #0d1117);
+      border-bottom: 1px solid var(--rule);
+      text-shadow: none;
+    }
+    .dots { display: flex; gap: 6px; }
+    .dots i {
+      width: 10px; height: 10px; border-radius: 50%;
+      display: inline-block; opacity: 0.9;
+    }
+    .dots i:nth-child(1){ background:#ff5f56; }
+    .dots i:nth-child(2){ background:#ffbd2e; }
+    .dots i:nth-child(3){ background:#27c93f; }
+    .titlebar .title {
+      flex: 1; text-align: center;
+      color: var(--fg-dim); font-size: 9px; letter-spacing: 0.04em;
+    }
+    .titlebar .badge { color: var(--fg-faint); font-size: 8.5px; }
+
+    /* ---- screen body ---- */
+    .screen { position: relative; padding: 18px 26px 22px; }
+
+    /* scanlines + vignette overlay */
+    .terminal::after {
+      content: "";
+      position: absolute; inset: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(0,0,0,0) 0px,
+          rgba(0,0,0,0) 2px,
+          rgba(0,0,0,0.08) 3px,
+          rgba(0,0,0,0.08) 3px
+        );
+      mix-blend-mode: multiply;
+      z-index: 3;
+    }
+    .terminal::before {
+      content: "";
+      position: absolute; inset: 0;
+      pointer-events: none;
+      background: radial-gradient(120% 90% at 50% 45%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.35) 100%);
+      z-index: 2;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: underline;
+      text-decoration-color: var(--link-underline);
+      text-underline-offset: 2px;
+    }
+    a:hover {
+      color: var(--fg-bright);
+      text-decoration-color: var(--link);
+    }
+
+    /* ---- shell prompt line ---- */
+    .cmd-line {
+      margin: 0 -26px 5px;
+      padding: 5px 26px;
+      background: var(--cmd-bar);
+      border-top: 1px solid var(--cmd-bar-edge);
+      border-bottom: 1px solid var(--cmd-bar-edge);
+      box-shadow: inset 0 1px 0 var(--cmd-inset);
+      white-space: nowrap;
+      font-size: 9.5px;
+    }
+    .cmd-line.endline { margin-top: 12px; }
+    .prompt-dim { color: var(--fg-dim); }
+    .prompt-dim .u,
+    .prompt-dim .sep,
+    .prompt-dim .p,
+    .prompt-dim .sh { color: inherit; }
+    .prompt-dim .sh { font-weight: 700; }
+    .cmd { color: var(--fg-dim); }
+    .cmd-key { color: var(--fg-bright); font-weight: 700; }
+    .cmd a { color: var(--fg-dim); text-decoration: none; }
+    .cmd a:hover { color: var(--fg-bright); text-decoration: none; }
+    .cmd .str { color: #a5d6ff; }
+    .cmd .flag { color: var(--cyan); }
+
+    .comment { color: var(--fg-dim); }
+
+    /* ---- header ---- */
+    header { margin-bottom: 4px; }
+    .name {
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      word-spacing: -0.04em;
+      text-transform: uppercase;
+      margin: 2px 0 0;
+      color: var(--fg-bright);
+      /* subtle accent glow — flatter than phosphor CRT */
+      text-shadow:
+        0 0 8px rgba(56, 139, 253, 0.28),
+        0 0 22px rgba(56, 139, 253, 0.12);
+    }
+    .role {
+      margin: 0;
+      color: var(--fg-bright);
+      font-size: 11.5px;
+      letter-spacing: 0.02em;
+    }
+    .role .arrow { color: #3fb950; font-weight: 700; }
+    .role .dotsep { color: var(--fg-dim); padding: 0 6px; }
+    .contact {
+      margin-top: 7px;
+      color: var(--fg-dim);
+      font-size: 9.2px;
+      word-spacing: 0.04em;
+    }
+    .contact .k { color: var(--fg-dim); }
+    .contact .v { color: var(--fg); }
+    .contact .pipe { color: var(--fg-faint); padding: 0 6px; }
+
+    /* ---- sections ---- */
+    section { margin-top: 13px; }
+    .out { margin-top: 4px; }
+
+    /* ---- job ---- */
+    .job { margin-bottom: 9px; }
+    .job:last-child { margin-bottom: 2px; }
+    .job-head {
+      display: flex; justify-content: space-between;
+      align-items: baseline; gap: 12px;
+      border-bottom: 1px dashed var(--rule);
+      padding-bottom: 2px;
+    }
+    .job-title { font-size: 10.5px; }
+    .job-title .company { color: var(--amber); font-weight: 700; }
+    .job-title .acq { color: var(--fg-dim); }
+    .job-title .ttl { color: var(--fg-bright); }
+    .job-title .colons { color: var(--fg-dim); }
+    .job-meta {
+      font-size: 8.6px; color: var(--fg-dim);
+      white-space: nowrap; letter-spacing: 0.03em;
+    }
+    .job-context { color: var(--fg-dim); margin: 3px 0 4px; font-size: 9px; }
+
+    ul.bullets { margin: 3px 0 0; padding: 0; list-style: none; }
+    ul.bullets li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 3px;
+      color: var(--fg);
+    }
+    ul.bullets li::before {
+      content: ">";
+      position: absolute; left: 2px; top: 0;
+      color: #3fb950; font-weight: 700;
+    }
+    strong { color: var(--fg-bright); font-weight: 700; }
+    code {
+      color: var(--cyan);
+      background: var(--code-bg);
+      padding: 0 3px; border-radius: 3px;
+    }
+
+    /* ---- skills ---- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 3px;
+    }
+    .skill-row { display: flex; gap: 8px; align-items: baseline; margin-bottom: 0; }
+    .skill-key {
+      flex: 0 0 88px; color: var(--amber); white-space: nowrap; font-size: 9.5px;
+    }
+    .skill-key::after { content: ""; }
+    .skill-val { color: var(--fg); }
+    .skill-val .b { color: var(--fg-dim); }
+
+    /* ---- education ---- */
+    .edu-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .edu-row .deg { color: var(--fg-bright); }
+    .edu-row .deg .school { color: var(--amber); }
+    .edu-row .sub { color: var(--fg-dim); }
+    .edu-row .meta { color: var(--fg-dim); font-size: 8.6px; white-space: nowrap; }
+
+    /* ---- blinking cursor ---- */
+    .cursor {
+      display: inline-block;
+      width: 8px; height: 13px;
+      background: var(--fg-bright);
+      box-shadow: 0 0 8px var(--glow);
+      vertical-align: text-bottom;
+      margin-left: 4px;
+      animation: blink 1.05s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    .endline { margin-top: 0; }
+
+    /* ============================================================
+       CRT screen animations — SCREEN ONLY (print neutralizes these)
+       All effects are deliberately low-amplitude + slow so they
+       read as "alive phosphor" rather than distracting motion.
+       ============================================================ */
+    @media screen {
+      /* 1. Name: slow phosphor glow "breathing" + occasional flicker dips */
+      .name { animation: namePulse 3.5s ease-in-out infinite; }
+
+      /* 2. Whole tube: barely-there brightness flicker / wobble */
+      .terminal { animation: crtFlicker 5s steps(1, end) infinite; }
+
+      /* 3. Scanlines: slow seamless downward drift (1px ≈ 1.2s) */
+      .terminal::after { animation: scanDrift 3.6s linear infinite; }
+
+      /* 4. Vignette: soft glow breathing in/out */
+      .terminal::before { animation: vignettePulse 9s ease-in-out infinite; }
+    }
+
+    @keyframes namePulse {
+      0%   { opacity: 0.97; filter: brightness(1.00); }
+      45%  { opacity: 1.00; filter: brightness(1.06); }
+      82%  { opacity: 1.00; filter: brightness(1.00); }
+      83%  { opacity: 0.86; }
+      84%  { opacity: 1.00; }
+      92%  { opacity: 1.00; }
+      93%  { opacity: 0.90; }
+      94.5%{ opacity: 1.00; }
+      100% { opacity: 0.97; filter: brightness(1.00); }
+    }
+    @keyframes crtFlicker {
+      0%, 100% { opacity: 1;    filter: brightness(1.00); }
+      8%       { opacity: 0.99; filter: brightness(0.985); }
+      9%       { opacity: 1;    filter: brightness(1.00); }
+      52%      { filter: brightness(1.012); }
+      53%      { filter: brightness(0.992); }
+      54%      { filter: brightness(1.00); }
+    }
+    @keyframes scanDrift {
+      from { background-position-y: 0; }
+      to   { background-position-y: 3px; }
+    }
+    @keyframes vignettePulse {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0.82; }
+    }
+
+    /* Accessibility: kill all motion if the user prefers reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .name,
+      .terminal,
+      .terminal::after,
+      .terminal::before,
+      .cursor { animation: none !important; }
+    }
+
+    /* ---- print ---- */
+    @page { size: Letter; margin: 0; }
+    @media print {
+      html, body {
+        background: var(--bg-screen) !important;
+        font-size: 8.9px;
+        line-height: 1.32;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .terminal {
+        margin: 0 auto; max-width: none; width: 100%;
+        border: none; border-radius: 0; box-shadow: none;
+        min-height: 0;
+      }
+      /* drop the layered transparency overlays for a light, fast PDF */
+      .terminal::before { display: none; }   /* vignette radial-gradient */
+      .terminal::after  { display: none; }   /* scanline repeating-gradient */
+      .screen { padding: 0.22in 0.5in 0.12in; }
+      section { margin-top: 4px; }
+      .out { margin-top: 2px; }
+      .job { margin-bottom: 4px; }
+      .job-context { margin: 2px 0 3px; }
+      ul.bullets li { margin-bottom: 2px; }
+      .skills-grid { row-gap: 1px; }
+      .cmd-line {
+        margin-left: -0.5in;
+        margin-right: -0.5in;
+        margin-bottom: 3px;
+        padding: 4px 0.5in;
+        background: var(--cmd-bar);
+        border-top: 1px solid var(--cmd-bar-edge);
+        border-bottom: 1px solid var(--cmd-bar-edge);
+        box-shadow: none;
+      }
+      .cmd-line.endline { margin-top: 2px; }
+      .endline { margin-top: 0; }
+      .name { font-size: 34px; }
+      /* freeze every animated element on an intentional, fully-lit frame */
+      .name, .terminal, .terminal::after, .terminal::before, .cursor {
+        animation: none !important;
+        opacity: 1 !important;
+        filter: none !important;
+      }
+      .job, section, .edu-row { break-inside: avoid; }
+      a {
+        color: var(--link);
+        text-decoration: underline;
+        text-decoration-color: rgba(68, 147, 248, 0.45);
+      }
+      .cmd-line.endline .cmd a {
+        color: var(--fg-dim);
+        text-decoration: none;
+      }
+      /* no per-glyph glow in print: each text-shadow becomes a transparency
+         group the PDF viewer has to composite, which is the main load cost */
+      * { text-shadow: none !important; box-shadow: none !important; filter: none !important; }
+      .terminal { background: var(--bg-screen) !important; }
+      .name {
+        /* one tasteful, small static phosphor glow on the name only */
+        text-shadow:
+          0 0 4px rgba(56, 139, 253, 0.35),
+          0 0 10px var(--glow) !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal">
+    <div class="titlebar">
+      <span class="dots"><i></i><i></i><i></i></span>
+      <span class="title">chas@macbook — -zsh — 80×40</span>
+      <span class="badge">resume.sh</span>
+    </div>
+
+    <div class="screen">
+
+      <header>
+        <div class="cmd-line"><span class="prompt-dim"><span class="u">chas@macbook</span><span class="sep">:</span><span class="p">~</span><span class="sh">$</span></span> <span class="cmd"><span class="cmd-key">whoami</span></span></div>
+        <h1 class="name">Chas Bean</h1>
+        <p class="role"><span class="arrow">&#10148;</span> Full-Stack &amp; AI Engineer <span class="dotsep">·</span> ex-CTO <span class="dotsep">·</span> Ferndale, MI <span class="dotsep">·</span> Open to Remote Roles</p>
+        <div class="contact">
+          <span class="v"><a href="https://chasbean.com">chasbean.com</a></span><span class="pipe">|</span>
+          <span class="v"><a href="mailto:charlesparkerbean@gmail.com">charlesparkerbean@gmail.com</a></span><span class="pipe">|</span>
+          <span class="v"><a href="https://github.com/chas-bean">github.com/chas-bean</a></span><span class="pipe">|</span>
+          <span class="v"><a href="https://linkedin.com/in/chasbean">linkedin.com/in/chasbean</a></span>
+        </div>
+      </header>
+
+      <section>
+        <div class="cmd-line"><span class="prompt-dim"><span class="u">chas@macbook</span><span class="sep">:</span><span class="p">~</span><span class="sh">$</span></span> <span class="cmd">cat <span class="cmd-key">summary</span>.txt</span></div>
+        <p class="out comment">
+          Full-stack engineer and former startup CTO with <strong>10+ years</strong> taking products from zero to
+          scale at venture-backed startups. I build <strong>developer platforms and full-stack products</strong> &mdash; APIs, SDKs, and agentic systems &mdash; end to end, from design through infra; most recently an <strong>autonomous SaaS negotiation agent</strong>. Happiest building <strong>ethical products</strong> with small, high-trust teams.
+        </p>
+      </section>
+
+      <section>
+        <div class="cmd-line"><span class="prompt-dim"><span class="u">chas@macbook</span><span class="sep">:</span><span class="p">~</span><span class="sh">$</span></span> <span class="cmd">cat <span class="cmd-key">experience</span>.md</span></div>
+        <div class="out">
+
+          <div class="job">
+            <div class="job-head">
+              <div class="job-title"><span class="company">Vertice</span> <span class="acq">(acquired Vendr)</span> <span class="colons">::</span> <span class="ttl">Senior Software Engineer II</span></div>
+              <div class="job-meta">JUL 2023 &ndash; PRESENT · REMOTE</div>
+            </div>
+            <div class="job-context"># Series B AI-powered SaaS pricing &amp; negotiation &mdash; $216M raised, ~$30M ARR; ~400 orgs; acquired May&nbsp;2026.</div>
+            <ul class="bullets">
+              <li>Provide <strong>first-class support and data requests</strong> for customers, including <strong>Anthropic, Brex, Duolingo, Grammarly, Gong, TIME, Twilio</strong>, through the Vendr&rarr;Vertice acquisition.</li>
+              <li>Co-owned the real-time <strong>agentic backend</strong> powering <a href="https://agent.vendr.com/" target="_blank" rel="noopener">Ruth</a>, Vendr's autonomous negotiation agent &mdash; a streaming LLM service serving <strong>5K MAU</strong> and <strong>~60K LLM calls/mo</strong>, with history, document extraction, and resumable sessions, plus tracing and evals.</li>
+              <li>Solo-architected the <strong>full-stack multiplayer chat system</strong> for running autonomous negotiations end-to-end with <a href="https://agent.vendr.com/" target="_blank" rel="noopener">Ruth</a> &mdash; coordinating 4 agents over a canonical <strong>append-only event timeline</strong> with point-in-time, VFS-backed memory.</li>
+              <li>Designed and built an <strong>integrations foundation</strong> that ingests documents in real time to surface savings and trigger renewals &mdash; shipping <strong>file storage connectors</strong> with Google Drive, Dropbox, and Box.</li>
+              <li>Cut <strong>per-turn LLM cost by 65%</strong> across <strong>3B tokens/mo</strong> &mdash; optimizing tool-call chains, payloads, encodings, prompt caching, and hot-path queries &mdash; holding spend to <strong>~$8K/mo</strong>.</li>
+              <li>Single-handedly built a Honey-style <a href="https://chromewebstore.google.com/detail/software-prices-by-vendr/kghlccelgdbjoadlfnoajfeljdcefnmi" target="_blank" rel="noopener">Chrome extension</a> that detects SaaS vendor sites and surfaces Vendr's pricing savings &amp; insights on-page &mdash; adopted by <strong>500+ users</strong> across orgs.</li>
+              <li>Co-built a <a href="https://www.npmjs.com/package/@vendr-org/connect-sdk" target="_blank" rel="noopener">published SDK</a>, <a href="https://developers.vendr.com" target="_blank" rel="noopener">public pricing APIs</a> (OpenAPI), and an <a href="https://github.com/vendrinc/vendr-mcp" target="_blank" rel="noopener">MCP server</a> that let partners like <strong>Zip</strong> and <strong>TrustRadius</strong> embed Vendr's pricing intelligence into their products &mdash; <strong>3.1M requests/mo</strong> at a <strong>57ms p50</strong>, <strong>2.7M MCP events/mo</strong>.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-head">
+              <div class="job-title"><span class="company">Toucan</span> <span class="acq">(acquired by Babbel)</span> <span class="colons">::</span> <span class="ttl">Senior Software Engineer II</span></div>
+              <div class="job-meta">JAN 2023 &ndash; MAR 2023 · REMOTE</div>
+            </div>
+            <div class="job-context"># Series A language-learning browser extension — $30M raised; 1.5M+ downloads, 12 languages, featured by Google and Microsoft.</div>
+            <ul class="bullets">
+              <li>Shipped browser-extension features delivering <strong>2B+ in-context language lessons</strong> to ~<strong>1M users</strong>.</li>
+              <li>Built <strong>A/B-tested monetization features</strong> that lifted conversion <strong>33% in one month</strong>.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-head">
+              <div class="job-title"><span class="company">Plain Sight</span> <span class="colons">::</span> <span class="ttl">Chief Technology Officer</span></div>
+              <div class="job-meta">AUG 2019 &ndash; JUN 2022 · DETROIT, MI</div>
+            </div>
+            <div class="job-context"># Seed-funded in-person networking app &mdash; $2M raised; featured on Product Hunt and the Apple App Store.</div>
+            <ul class="bullets">
+              <li>Owned technical direction as CTO &mdash; led <strong>3 engineers plus contractors</strong>, ran white-glove email &amp; push marketing campaigns, and personally hosted the in-person meetups the product was built around.</li>
+              <li>Steered the company through <strong>2 full pivots in 3 years</strong> &mdash; from geofenced in-person networking, to a remote social feed when COVID hit, to an in-person <strong>events &amp; ticketing</strong> platform.</li>
+              <li>Built and shipped the web + mobile apps end-to-end with automated CI/CD and release monitoring &mdash; a <strong>99.27% crash-free rate</strong> over <strong>200+ releases</strong> to <strong>10k+ users</strong>.</li>
+              <li>Delivered <strong>20+ production features</strong> &mdash; Stripe payments, ticketing &amp; check-ins, real-time push, search, and recommendations &mdash; with end-to-end test coverage.</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div class="job-head">
+              <div class="job-title"><span class="company">IndustryStar</span> <span class="colons">::</span> <span class="ttl">Senior Software Engineer</span></div>
+              <div class="job-meta">DEC 2015 &ndash; AUG 2019 · ANN ARBOR, MI</div>
+            </div>
+            <div class="job-context"># Supply-chain management platform at a self-funded startup (2nd engineering hire).</div>
+            <ul class="bullets">
+              <li>Led front-end development as the <strong>2nd engineering hire</strong> &mdash; driving a <strong>full rewrite that cut duplicated/dead code by 30%+</strong> &mdash; and shaped product direction across release estimates, vision, and UX.</li>
+              <li>Shipped full-stack features end-to-end &mdash; <strong>real-time collaborative spreadsheets</strong>, supplier search, templated emails, and subscriptions &mdash; and redesigned the REST API architecture.</li>
+              <li><strong>Mentored and recruited</strong> junior engineers and interns.</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <section>
+        <div class="cmd-line"><span class="prompt-dim"><span class="u">chas@macbook</span><span class="sep">:</span><span class="p">~</span><span class="sh">$</span></span> <span class="cmd">rg <span class="str">'^\w+:'</span> <span class="cmd-key">skills</span>/</span></div>
+        <div class="out skills-grid">
+          <div class="skill-row">
+            <span class="skill-key">languages:</span>
+            <span class="skill-val">TypeScript <span class="b">·</span> GraphQL</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-key">frameworks:</span>
+            <span class="skill-val">React <span class="b">·</span> React&nbsp;Native <span class="b">·</span> Remix <span class="b">·</span> Node.js <span class="b">·</span> Tailwind</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-key">tools:</span>
+            <span class="skill-val">Bun <span class="b">·</span> Vite <span class="b">·</span> Playwright</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-key">cloud:</span>
+            <span class="skill-val">CDK <span class="b">·</span> SST <span class="b">·</span> Lambda <span class="b">·</span> ECS <span class="b">·</span> S3 <span class="b">·</span> SQS <span class="b">·</span> EventBridge <span class="b">·</span> GitHub&nbsp;Actions</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-key">realtime:</span>
+            <span class="skill-val">SSE <span class="b">·</span> WSS <span class="b">·</span> web&nbsp;streams <span class="b">·</span> Redis</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-key">ai:</span>
+            <span class="skill-val">MCP <span class="b">·</span> AI&nbsp;SDK <span class="b">·</span> LLMs <span class="b">·</span> prompting <span class="b">·</span> OpenRouter <span class="b">·</span> evals <span class="b">·</span> agent&nbsp;memory</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-key">databases:</span>
+            <span class="skill-val">PostgreSQL <span class="b">·</span> Prisma <span class="b">·</span> pgboss</span>
+          </div>
+          <div class="skill-row">
+            <span class="skill-key">services:</span>
+            <span class="skill-val">Stripe <span class="b">·</span> Metronome <span class="b">·</span> Clerk <span class="b">·</span> Segment <span class="b">·</span> Sentry <span class="b">·</span> Braintrust <span class="b">·</span> Zuplo</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="cmd-line"><span class="prompt-dim"><span class="u">chas@macbook</span><span class="sep">:</span><span class="p">~</span><span class="sh">$</span></span> <span class="cmd">cat <span class="cmd-key">education</span>.txt</span></div>
+        <div class="out edu-row">
+          <div>
+            <div class="deg"><strong>B.S. Computer Science &amp; Engineering</strong> <span class="colons">@</span> <span class="school">Michigan State University</span></div>
+            <div class="sub">Linguistics cognate &middot; 2+ yrs volunteer NLP research on topic evolution across forum threads.</div>
+          </div>
+          <div class="meta">SEP 2011 &ndash; DEC 2015 · EAST LANSING, MI</div>
+        </div>
+      </section>
+
+      <div class="cmd-line endline"><span class="prompt-dim"><span class="u">chas@macbook</span><span class="sep">:</span><span class="p">~</span><span class="sh">$</span></span> <span class="cmd"><a href="mailto:charlesparkerbean@gmail.com?subject=Let%27s%20build%20something">mail <span class="flag">-s</span> <span class="str">"let's build something"</span> charlesparkerbean@gmail.com</a></span><span class="cursor"></span></div>
+
+    </div>
+  </div>
+  <script>
+    (function () {
+      var line = document.querySelector('.endline');
+      if (!line) return;
+      var subject = (line.querySelector('.str') || {}).textContent || '';
+      subject = subject.replace(/^["']+|["']+$/g, '').trim();
+      var email = (line.textContent.match(/[\w.+-]+@[\w.-]+\.\w+/) || [])[0];
+      if (!email) return;
+      var href = 'mailto:' + email + '?subject=' + encodeURIComponent(subject);
+      var fired = false;
+      function openMail() {
+        if (fired) return;
+        fired = true;
+        window.location.href = href;
+        setTimeout(function () { fired = false; }, 800);
+      }
+      line.style.cursor = 'pointer';
+      line.addEventListener('click', openMail);
+      document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter' || e.repeat) return;
+        var t = e.target;
+        if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+        e.preventDefault();
+        openMail();
+      });
+    })();
+  </script>
+</body>
+</html>
