@@ -1,0 +1,383 @@
+/*
+      ============================================================
+      EDIT GUIDE  ::  GITHUB DARK THEME (v30) — resume-slate.html
+      ------------------------------------------------------------
+      - CRT shell + GitHub palette; paired green phosphor: resume-phosphor.html
+      - Export PDF: open in Chrome -> Cmd+P -> "Save as PDF",
+        Margins "None", and ENABLE "Background graphics" (so the
+        dark CRT background prints). See README.md.
+      ============================================================
+    */
+    :root {
+      /* GitHub dark (Primer) tokens */
+      --bg:        #010409;   /* canvas inset            */
+      --bg-screen: #0d1117;   /* canvas default          */
+      --fg:        #c9d1d9;   /* body text               */
+      --fg-bright: #e6edf3;   /* emphasis                */
+      --fg-dim:    #8b949e;   /* muted                   */
+      --fg-faint:  #484f58;   /* subtle                  */
+      --amber:     #e3b341;   /* companies / skill keys  */
+      --cyan:      #79c0ff;   /* flags / code / paths    */
+      --rule:      #30363d;   /* borders                 */
+      --glow:      rgba(56, 139, 253, 0.22);
+      --link:      #4493f8;
+      --cmd-bar:   #161b22;   /* canvas subtle           */
+      --cmd-bar-edge: #30363d;
+      --cmd-inset: rgba(56, 139, 253, 0.06);
+      --link-underline: rgba(68, 147, 248, 0.35);
+      --code-bg:   rgba(56, 139, 253, 0.10);
+      --maxw:      820px;
+      --mono: "JetBrains Mono", "SF Mono", "SFMono-Regular", "Cascadia Code",
+              Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background:
+        radial-gradient(120% 120% at 50% 0%, #161b22 0%, #0d1117 65%, #010409 100%);
+      color: var(--fg);
+      font-family: var(--mono);
+      font-size: 10.1px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .terminal {
+      position: relative;
+      max-width: var(--maxw);
+      margin: 22px auto;
+      background: var(--bg-screen);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      box-shadow:
+        0 0 0 1px rgba(48,54,61,0.6),
+        0 0 32px rgba(56,139,253,0.06),
+        0 18px 60px rgba(0,0,0,0.55);
+      overflow: hidden;
+      text-shadow: none;
+    }
+
+    /* ---- window title bar ---- */
+    .titlebar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      background: linear-gradient(#161b22, #0d1117);
+      border-bottom: 1px solid var(--rule);
+      text-shadow: none;
+    }
+    .dots { display: flex; gap: 6px; }
+    .dots i {
+      width: 10px; height: 10px; border-radius: 50%;
+      display: inline-block; opacity: 0.9;
+    }
+    .dots i:nth-child(1){ background:#ff5f56; }
+    .dots i:nth-child(2){ background:#ffbd2e; }
+    .dots i:nth-child(3){ background:#27c93f; }
+    .titlebar .title {
+      flex: 1; text-align: center;
+      color: var(--fg-dim); font-size: 9px; letter-spacing: 0.04em;
+    }
+    .titlebar .badge { color: var(--fg-faint); font-size: 8.5px; }
+
+    /* ---- screen body ---- */
+    .screen { position: relative; padding: 18px 26px 22px; }
+
+    /* scanlines + vignette overlay */
+    .terminal::after {
+      content: "";
+      position: absolute; inset: 0;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(0,0,0,0) 0px,
+          rgba(0,0,0,0) 2px,
+          rgba(0,0,0,0.08) 3px,
+          rgba(0,0,0,0.08) 3px
+        );
+      mix-blend-mode: multiply;
+      z-index: 3;
+    }
+    .terminal::before {
+      content: "";
+      position: absolute; inset: 0;
+      pointer-events: none;
+      background: radial-gradient(120% 90% at 50% 45%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.35) 100%);
+      z-index: 2;
+    }
+
+    a:link,
+    a:visited {
+      color: var(--link);
+      text-decoration: underline;
+      text-decoration-color: var(--link-underline);
+      text-underline-offset: 2px;
+    }
+    a:hover {
+      color: var(--fg-bright);
+      text-decoration-color: var(--link);
+    }
+
+    /* ---- shell prompt line ---- */
+    .cmd-line {
+      margin: 0 -26px 5px;
+      padding: 5px 26px;
+      background: var(--cmd-bar);
+      border-top: 1px solid var(--cmd-bar-edge);
+      border-bottom: 1px solid var(--cmd-bar-edge);
+      box-shadow: inset 0 1px 0 var(--cmd-inset);
+      white-space: nowrap;
+      font-size: 9.5px;
+    }
+    .cmd-line.endline { margin-top: 12px; }
+    .prompt-dim { color: var(--fg-dim); }
+    .prompt-dim .u,
+    .prompt-dim .sep,
+    .prompt-dim .p,
+    .prompt-dim .sh { color: inherit; }
+    .prompt-dim .sh { font-weight: 700; }
+    .cmd { color: var(--fg-dim); }
+    .cmd-key { color: var(--fg-bright); font-weight: 700; }
+    .cmd a { color: var(--fg-dim); text-decoration: none; }
+    .cmd a:hover { color: var(--fg-bright); text-decoration: none; }
+    .cmd .str { color: #a5d6ff; }
+    .cmd .flag { color: var(--cyan); }
+
+    .comment { color: var(--fg-dim); }
+
+    /* ---- header ---- */
+    header { margin-bottom: 4px; }
+    .name {
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      word-spacing: -0.04em;
+      text-transform: uppercase;
+      margin: 2px 0 0;
+      color: var(--fg-bright);
+      /* subtle accent glow — flatter than phosphor CRT */
+      text-shadow:
+        0 0 8px rgba(56, 139, 253, 0.28),
+        0 0 22px rgba(56, 139, 253, 0.12);
+    }
+    .role {
+      margin: 0;
+      color: var(--fg-bright);
+      font-size: 11.5px;
+      letter-spacing: 0.02em;
+    }
+    .role .arrow { color: #3fb950; font-weight: 700; }
+    .role .dotsep { color: var(--fg-dim); padding: 0 6px; }
+    .contact {
+      margin-top: 7px;
+      color: var(--fg-dim);
+      font-size: 9.2px;
+      word-spacing: 0.04em;
+    }
+    .contact .k { color: var(--fg-dim); }
+    .contact .v { color: var(--fg); }
+    .contact .pipe { color: var(--fg-faint); padding: 0 6px; }
+
+    /* ---- sections ---- */
+    section { margin-top: 13px; }
+    .out { margin-top: 4px; }
+
+    /* ---- job ---- */
+    .job { margin-bottom: 9px; }
+    .job:last-child { margin-bottom: 2px; }
+    .job-head {
+      display: flex; justify-content: space-between;
+      align-items: baseline; gap: 12px;
+      border-bottom: 1px dashed var(--rule);
+      padding-bottom: 2px;
+    }
+    .job-title { font-size: 10.5px; }
+    .job-title .company { color: var(--amber); font-weight: 700; }
+    .job-title .acq { color: var(--fg-dim); }
+    .job-title .ttl { color: var(--fg-bright); }
+    .job-title .colons { color: var(--fg-dim); }
+    .job-meta {
+      font-size: 8.6px; color: var(--fg-dim);
+      white-space: nowrap; letter-spacing: 0.03em;
+    }
+    .job-context { color: var(--fg-dim); margin: 3px 0 4px; font-size: 9px; }
+
+    ul.bullets { margin: 3px 0 0; padding: 0; list-style: none; }
+    ul.bullets li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 3px;
+      color: var(--fg);
+    }
+    ul.bullets li::before {
+      content: ">";
+      position: absolute; left: 2px; top: 0;
+      color: #3fb950; font-weight: 700;
+    }
+    strong { color: var(--fg-bright); font-weight: 700; }
+    code {
+      color: var(--cyan);
+      background: var(--code-bg);
+      padding: 0 3px; border-radius: 3px;
+    }
+
+    /* ---- skills ---- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 3px;
+    }
+    .skill-row { display: flex; gap: 8px; align-items: baseline; margin-bottom: 0; }
+    .skill-key {
+      flex: 0 0 88px; color: var(--amber); white-space: nowrap; font-size: 9.5px;
+    }
+    .skill-key::after { content: ""; }
+    .skill-val { color: var(--fg); }
+    .skill-val .b { color: var(--fg-dim); }
+
+    /* ---- education ---- */
+    .edu-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .edu-row .deg { color: var(--fg-bright); }
+    .edu-row .deg .school { color: var(--amber); }
+    .edu-row .sub { color: var(--fg-dim); }
+    .edu-row .meta { color: var(--fg-dim); font-size: 8.6px; white-space: nowrap; }
+
+    /* ---- blinking cursor ---- */
+    .cursor {
+      display: inline-block;
+      width: 8px; height: 13px;
+      background: var(--fg-bright);
+      box-shadow: 0 0 8px var(--glow);
+      vertical-align: text-bottom;
+      margin-left: 4px;
+      animation: blink 1.05s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    .endline { margin-top: 0; }
+
+    /* ============================================================
+       CRT screen animations — SCREEN ONLY (print neutralizes these)
+       All effects are deliberately low-amplitude + slow so they
+       read as "alive phosphor" rather than distracting motion.
+       ============================================================ */
+    @media screen {
+      /* 1. Name: slow phosphor glow "breathing" + occasional flicker dips */
+      .name { animation: namePulse 3.5s ease-in-out infinite; }
+
+      /* 2. Whole tube: barely-there brightness flicker / wobble */
+      .terminal { animation: crtFlicker 5s steps(1, end) infinite; }
+
+      /* 3. Scanlines: slow seamless downward drift (1px ≈ 1.2s) */
+      .terminal::after { animation: scanDrift 3.6s linear infinite; }
+
+      /* 4. Vignette: soft glow breathing in/out */
+      .terminal::before { animation: vignettePulse 9s ease-in-out infinite; }
+    }
+
+    @keyframes namePulse {
+      0%   { opacity: 0.97; filter: brightness(1.00); }
+      45%  { opacity: 1.00; filter: brightness(1.06); }
+      82%  { opacity: 1.00; filter: brightness(1.00); }
+      83%  { opacity: 0.86; }
+      84%  { opacity: 1.00; }
+      92%  { opacity: 1.00; }
+      93%  { opacity: 0.90; }
+      94.5%{ opacity: 1.00; }
+      100% { opacity: 0.97; filter: brightness(1.00); }
+    }
+    @keyframes crtFlicker {
+      0%, 100% { opacity: 1;    filter: brightness(1.00); }
+      8%       { opacity: 0.99; filter: brightness(0.985); }
+      9%       { opacity: 1;    filter: brightness(1.00); }
+      52%      { filter: brightness(1.012); }
+      53%      { filter: brightness(0.992); }
+      54%      { filter: brightness(1.00); }
+    }
+    @keyframes scanDrift {
+      from { background-position-y: 0; }
+      to   { background-position-y: 3px; }
+    }
+    @keyframes vignettePulse {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0.82; }
+    }
+
+    /* Accessibility: kill all motion if the user prefers reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .name,
+      .terminal,
+      .terminal::after,
+      .terminal::before,
+      .cursor { animation: none !important; }
+    }
+
+    /* ---- print ---- */
+    @page { size: Letter; margin: 0; }
+    @media print {
+      html, body {
+        background: var(--bg-screen) !important;
+        font-size: 8.9px;
+        line-height: 1.32;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .terminal {
+        margin: 0 auto; max-width: none; width: 100%;
+        border: none; border-radius: 0; box-shadow: none;
+        min-height: 0;
+      }
+      /* drop the layered transparency overlays for a light, fast PDF */
+      .terminal::before { display: none; }   /* vignette radial-gradient */
+      .terminal::after  { display: none; }   /* scanline repeating-gradient */
+      .screen { padding: 0.22in 0.5in 0.12in; }
+      section { margin-top: 4px; }
+      .out { margin-top: 2px; }
+      .job { margin-bottom: 4px; }
+      .job-context { margin: 2px 0 3px; }
+      ul.bullets li { margin-bottom: 2px; }
+      .skills-grid { row-gap: 1px; }
+      .cmd-line {
+        margin-left: -0.5in;
+        margin-right: -0.5in;
+        margin-bottom: 3px;
+        padding: 4px 0.5in;
+        background: var(--cmd-bar);
+        border-top: 1px solid var(--cmd-bar-edge);
+        border-bottom: 1px solid var(--cmd-bar-edge);
+        box-shadow: none;
+      }
+      .cmd-line.endline { margin-top: 4px; }
+      .endline { margin-top: 0; }
+      .name { font-size: 34px; }
+      /* freeze every animated element on an intentional, fully-lit frame */
+      .name, .terminal, .terminal::after, .terminal::before, .cursor {
+        animation: none !important;
+        opacity: 1 !important;
+        filter: none !important;
+      }
+      .job, section, .edu-row { break-inside: avoid; }
+      a {
+        color: var(--link);
+        text-decoration: underline;
+        text-decoration-color: rgba(68, 147, 248, 0.45);
+      }
+      .cmd-line.endline .cmd a {
+        color: var(--fg-dim);
+        text-decoration: none;
+      }
+      /* no per-glyph glow in print: each text-shadow becomes a transparency
+         group the PDF viewer has to composite, which is the main load cost */
+      * { text-shadow: none !important; box-shadow: none !important; filter: none !important; }
+      .terminal { background: var(--bg-screen) !important; }
+      .name {
+        /* one tasteful, small static phosphor glow on the name only */
+        text-shadow:
+          0 0 4px rgba(56, 139, 253, 0.35),
+          0 0 10px var(--glow) !important;
+      }
+    }

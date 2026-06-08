@@ -1,16 +1,184 @@
 <!DOCTYPE html>
-<html lang="en" style="width: 100%; height: 100%">
-  <head>
-    <title>Chas Bean's Resume</title>
-    <meta http-equiv="refresh" content="0; URL=/docs/chas-bean-resume.pdf" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link rel="canonical" href="/docs/chas-bean-resume.pdf" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-  </head>
-  <body>
-    <p>
-      Redirecting you to my resume
-      <a href="/docs/chas-bean-resume.pdf">here</a>...
-    </p>
-  </body>
+<html lang="en" data-theme="crt" class="theme-live">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chas Bean — Resume</title>
+  <meta name="description" content="Chas Bean — Full-Stack & AI Engineer. Interactive resume with phosphor, slate, and paper themes." />
+  <link rel="stylesheet" href="themes/tokens.css" />
+  <link rel="stylesheet" href="themes/live.css" />
+  <link rel="stylesheet" href="themes/index.css" />
+</head>
+<body>
+  <header class="chrome">
+    <div class="chrome-track">
+      <nav class="theme-toggle" aria-label="Resume color theme">
+        <button type="button" class="theme-btn" data-theme="crt" aria-label="Phosphor — green terminal" title="Phosphor — green terminal" aria-pressed="true">
+          <span class="swatch" aria-hidden="true"></span><span class="theme-name">phosphor</span>
+        </button>
+        <button type="button" class="theme-btn" data-theme="github" aria-label="Slate — dark" title="Slate — dark code theme" aria-pressed="false">
+          <span class="swatch" aria-hidden="true"></span><span class="theme-name">slate</span>
+        </button>
+        <button type="button" class="theme-btn" data-theme="paper" aria-label="Paper — light" title="Paper — light theme" aria-pressed="false">
+          <span class="swatch swatch-light" aria-hidden="true"></span><span class="theme-name">paper</span>
+        </button>
+      </nav>
+      <div class="actions">
+        <span class="hint">pdf:</span>
+        <a id="open-link" href="resume-phosphor.html" target="_blank" rel="noopener">open</a>
+        <a id="pdf-link" href="resume-phosphor.pdf" target="_blank" rel="noopener">download</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="resume-root">
+    <div class="terminal">
+        <div class="titlebar">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="title">chas@macbook — -zsh — 80×40</span>
+          <span class="badge">resume.sh</span>
+        </div>
+
+        <div class="screen">
+
+          <header>
+            <div class="cmd-line"><span class="prompt-dim"><span class="u">chas@macbook</span><span class="sep">:</span><span class="p">~</span><span class="sh">$</span></span> <span class="cmd"><span class="cmd-key">whoami</span></span></div>
+            <h1 class="name">Chas Bean</h1>
+            <p class="role"><span class="arrow">&#10148;</span> Full-Stack &amp; AI Engineer <span class="dotsep">·</span> ex-CTO <span class="dotsep">·</span> Ferndale, MI <span class="dotsep">·</span> Open to Remote Roles</p>
+            <div class="contact">
+              <span class="v"><a href="https://chasbean.com"><span class="link-label">chasbean.com</span></a></span><span class="pipe">|</span>
+              <span class="v"><a href="mailto:charlesparkerbean@gmail.com"><span class="link-label">charlesparkerbean@gmail.com</span></a></span><span class="pipe">|</span>
+              <span class="v"><a href="https://github.com/chas-bean"><span class="link-label">github.com/chas-bean</span></a></span><span class="pipe">|</span>
+              <span class="v"><a href="https://linkedin.com/in/chasbean"><span class="link-label">linkedin.com/in/chasbean</span></a></span>
+            </div>
+          </header>
+
+          <section>
+            <div class="cmd-line"><span class="prompt-dim"><span class="u">chas@macbook</span><span class="sep">:</span><span class="p">~</span><span class="sh">$</span></span> <span class="cmd">cat <span class="cmd-key">summary</span>.txt</span></div>
+            <p class="out comment">
+              Full-stack engineer and former startup CTO with <strong>10+ years</strong> taking products from zero to
+              scale at venture-backed startups. I build <strong>developer platforms and full-stack products</strong> &mdash; APIs, SDKs, and agentic systems &mdash; end to end, from design through infra; most recently an <strong>autonomous SaaS negotiation agent</strong>. Happiest building <strong>ethical products</strong> with small, high-trust teams.
+            </p>
+          </section>
+
+          <section>
+            <div class="cmd-line"><span class="prompt-dim"><span class="u">chas@macbook</span><span class="sep">:</span><span class="p">~</span><span class="sh">$</span></span> <span class="cmd">cat <span class="cmd-key">experience</span>.md</span></div>
+            <div class="out">
+
+              <div class="job">
+                <div class="job-head">
+                  <div class="job-title"><span class="company">Vertice</span> <span class="acq">(acquired Vendr)</span> <span class="colons">::</span> <span class="ttl">Senior Software Engineer II</span></div>
+                  <div class="job-meta">JUL 2023 &ndash; PRESENT · REMOTE</div>
+                </div>
+                <div class="job-context"># Series B AI-powered SaaS pricing &amp; negotiation &mdash; $216M raised, ~$30M ARR; ~400 orgs; acquired May&nbsp;2026.</div>
+                <ul class="bullets">
+                  <li>Co-owned the real-time <strong>agentic backend</strong> powering <a href="https://agent.vendr.com/" target="_blank" rel="noopener"><span class="link-label">Ruth</span></a>, Vendr's autonomous negotiation agent &mdash; a streaming LLM service serving <strong>5K MAU</strong> and <strong>~60K LLM calls/mo</strong>, with history, document extraction, and resumable sessions, plus tracing and evals.</li>
+                  <li>Solo-architected the <strong>full-stack multiplayer chat system</strong> for running autonomous negotiations end-to-end with <a href="https://agent.vendr.com/" target="_blank" rel="noopener"><span class="link-label">Ruth</span></a> &mdash; coordinating 4 agents over a canonical <strong>append-only event timeline</strong> with point-in-time, VFS-backed memory.</li>
+                  <li>Co-built a <a href="https://www.npmjs.com/package/@vendr-org/connect-sdk" target="_blank" rel="noopener"><span class="link-label">published SDK</span></a>, <a href="https://developers.vendr.com" target="_blank" rel="noopener"><span class="link-label">public pricing APIs</span></a> (OpenAPI), and an <a href="https://github.com/vendrinc/vendr-mcp" target="_blank" rel="noopener"><span class="link-label">MCP server</span></a> that let partners like <strong>Zip</strong> and <strong>TrustRadius</strong> embed Vendr's pricing intelligence into their products &mdash; <strong>3.1M requests/mo</strong> at a <strong>57ms p50</strong>, <strong>2.7M MCP events/mo</strong>.</li>
+                  <li>Cut <strong>per-turn LLM cost by 65%</strong> across <strong>3B tokens/mo</strong> &mdash; optimizing tool-call chains, payloads, encodings, prompt caching, and hot-path queries &mdash; holding spend to <strong>~$8K/mo</strong>.</li>
+                  <li>Designed and built an <strong>integrations foundation</strong> that ingests documents in real time to surface savings and trigger renewals &mdash; shipping <strong>file storage connectors</strong> with Google Drive, Dropbox, and Box.</li>
+                  <li>Single-handedly built a Honey-style <a href="https://chromewebstore.google.com/detail/software-prices-by-vendr/kghlccelgdbjoadlfnoajfeljdcefnmi" target="_blank" rel="noopener"><span class="link-label">Chrome extension</span></a> that detects SaaS vendor sites and surfaces Vendr's pricing savings &amp; insights on-page &mdash; adopted by <strong>500+ users</strong> across orgs.</li>
+                  <li>Provide <strong>first-class support and data requests</strong> for customers, including <strong>Anthropic, Brex, Duolingo, Grammarly, Gong, TIME, Twilio</strong>, through the Vendr&rarr;Vertice acquisition.</li>
+                </ul>
+              </div>
+
+              <div class="job">
+                <div class="job-head">
+                  <div class="job-title"><span class="company">Toucan</span> <span class="acq">(acquired by Babbel)</span> <span class="colons">::</span> <span class="ttl">Senior Software Engineer II</span></div>
+                  <div class="job-meta">JAN 2023 &ndash; MAR 2023 · REMOTE</div>
+                </div>
+                <div class="job-context"># Series A language-learning browser extension — $30M raised; 1.5M+ downloads, 12 languages, featured by Google and Microsoft.</div>
+                <ul class="bullets">
+                  <li>Shipped browser-extension features delivering <strong>2B+ in-context language lessons</strong> to ~<strong>1M users</strong>.</li>
+                  <li>Built <strong>A/B-tested monetization features</strong> that lifted conversion <strong>33% in one month</strong>.</li>
+                </ul>
+              </div>
+
+              <div class="job">
+                <div class="job-head">
+                  <div class="job-title"><span class="company">Plain Sight</span> <span class="colons">::</span> <span class="ttl">Chief Technology Officer</span></div>
+                  <div class="job-meta">AUG 2019 &ndash; JUN 2022 · DETROIT, MI</div>
+                </div>
+                <div class="job-context"># Seed-funded in-person networking app &mdash; $2M raised; featured on Product Hunt and the Apple App Store.</div>
+                <ul class="bullets">
+                  <li>Owned technical direction as CTO &mdash; led <strong>3 engineers plus contractors</strong>, ran white-glove email &amp; push marketing campaigns, and personally hosted the in-person meetups the product was built around.</li>
+                  <li>Steered the company through <strong>2 full pivots in 3 years</strong> &mdash; from geofenced in-person networking, to a remote social feed when COVID hit, to an in-person <strong>events &amp; ticketing</strong> platform.</li>
+                  <li>Built and shipped the web + mobile apps end-to-end with automated CI/CD and release monitoring &mdash; a <strong>99.27% crash-free rate</strong> over <strong>200+ releases</strong> to <strong>10k+ users</strong>.</li>
+                  <li>Delivered <strong>20+ production features</strong> &mdash; Stripe payments, ticketing &amp; check-ins, real-time push, search, and recommendations &mdash; with end-to-end test coverage.</li>
+                </ul>
+              </div>
+
+              <div class="job">
+                <div class="job-head">
+                  <div class="job-title"><span class="company">IndustryStar</span> <span class="colons">::</span> <span class="ttl">Senior Software Engineer</span></div>
+                  <div class="job-meta">DEC 2015 &ndash; AUG 2019 · ANN ARBOR, MI</div>
+                </div>
+                <div class="job-context"># Supply-chain management platform at a self-funded startup (2nd engineering hire).</div>
+                <ul class="bullets">
+                  <li>Led front-end development as the <strong>2nd engineering hire</strong> &mdash; driving a <strong>full rewrite that cut duplicated/dead code by 30%+</strong> &mdash; and shaped product direction across release estimates, vision, and UX.</li>
+                  <li>Shipped full-stack features end-to-end &mdash; <strong>real-time collaborative spreadsheets</strong>, supplier search, templated emails, and subscriptions &mdash; and redesigned the REST API architecture.</li>
+                  <li><strong>Mentored and recruited</strong> junior engineers and interns.</li>
+                </ul>
+              </div>
+
+            </div>
+          </section>
+
+          <section>
+            <div class="cmd-line"><span class="prompt-dim"><span class="u">chas@macbook</span><span class="sep">:</span><span class="p">~</span><span class="sh">$</span></span> <span class="cmd">rg <span class="str">'^\w+:'</span> <span class="cmd-key">skills</span>/</span></div>
+            <div class="out skills-grid">
+              <div class="skill-row">
+                <span class="skill-key">languages:</span>
+                <span class="skill-val">TypeScript <span class="b">·</span> GraphQL</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-key">frameworks:</span>
+                <span class="skill-val">React <span class="b">·</span> React&nbsp;Native <span class="b">·</span> Remix <span class="b">·</span> Node.js <span class="b">·</span> Tailwind</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-key">tools:</span>
+                <span class="skill-val">Bun <span class="b">·</span> Vite <span class="b">·</span> Playwright</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-key">cloud:</span>
+                <span class="skill-val">CDK <span class="b">·</span> SST <span class="b">·</span> Lambda <span class="b">·</span> ECS <span class="b">·</span> S3 <span class="b">·</span> SQS <span class="b">·</span> EventBridge <span class="b">·</span> GitHub&nbsp;Actions</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-key">realtime:</span>
+                <span class="skill-val">SSE <span class="b">·</span> WSS <span class="b">·</span> web&nbsp;streams <span class="b">·</span> Redis</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-key">ai:</span>
+                <span class="skill-val">MCP <span class="b">·</span> AI&nbsp;SDK <span class="b">·</span> LLMs <span class="b">·</span> prompting <span class="b">·</span> OpenRouter <span class="b">·</span> evals <span class="b">·</span> agent&nbsp;memory</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-key">databases:</span>
+                <span class="skill-val">PostgreSQL <span class="b">·</span> Prisma <span class="b">·</span> pgboss</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-key">services:</span>
+                <span class="skill-val">Stripe <span class="b">·</span> Metronome <span class="b">·</span> Clerk <span class="b">·</span> Segment <span class="b">·</span> Sentry <span class="b">·</span> Braintrust <span class="b">·</span> Zuplo</span>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <div class="cmd-line"><span class="prompt-dim"><span class="u">chas@macbook</span><span class="sep">:</span><span class="p">~</span><span class="sh">$</span></span> <span class="cmd">cat <span class="cmd-key">education</span>.txt</span></div>
+            <div class="out edu-row">
+              <div>
+                <div class="deg"><strong>B.S. Computer Science &amp; Engineering</strong> <span class="colons">@</span> <span class="school">Michigan State University</span></div>
+                <div class="sub">Linguistics cognate &middot; 2+ yrs volunteer NLP research on topic evolution across forum threads.</div>
+              </div>
+              <div class="meta">SEP 2011 &ndash; DEC 2015 · EAST LANSING, MI</div>
+            </div>
+          </section>
+
+          <div class="cmd-line endline"><span class="prompt-dim"><span class="u">chas@macbook</span><span class="sep">:</span><span class="p">~</span><span class="sh">$</span></span> <span class="cmd"><a href="mailto:charlesparkerbean@gmail.com?subject=Let%27s%20build%20something">mail <span class="flag">-s</span> <span class="str">"let's build something"</span> charlesparkerbean@gmail.com</a></span><span class="cursor"></span></div>
+
+        </div>
+      </div>
+  </main>
+
+  <script src="js/index.js" defer></script>
+</body>
 </html>

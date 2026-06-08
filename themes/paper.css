@@ -1,0 +1,256 @@
+/*
+      ============================================================
+      EDIT GUIDE  ::  PAPER THEME (v30)
+      ------------------------------------------------------------
+      - Warm light "man page" ink on paper — flat, no glow, no CRT.
+      - Same v30 content/DOM as resume.html (cmd bars, merged Vertice).
+      - Also: resume-paper.html (same theme) · resume.html (GitHub dark)
+      - Export PDF: open in Chrome -> Cmd+P -> "Save as PDF",
+        Margins "None", and ENABLE "Background graphics".
+      ============================================================
+    */
+    :root {
+      --bg:        #f1ede3;
+      --paper:     #faf8f2;
+      --ink:       #1f2328;
+      --ink-strong:#111418;
+      --ink-dim:   #5a6169;
+      --ink-faint: #8a9097;
+      --accent:    #117a63;
+      --link:      var(--accent);
+      --rule:      #d9d3c6;
+      --code-bg:   #ecefe9;
+      --cmd-bar:   #efeadf;
+      --cmd-bar-edge: #d9d3c6;
+      --cmd-inset: rgba(255,255,255,0.45);
+      --maxw:      820px;
+      --mono: "JetBrains Mono", "SF Mono", "SFMono-Regular", "Cascadia Code",
+              Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 10.1px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .terminal {
+      position: relative;
+      max-width: var(--maxw);
+      margin: 22px auto;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+
+    .titlebar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      background: #efeadf;
+      border-bottom: 1px solid var(--rule);
+    }
+    .dots { display: flex; gap: 6px; }
+    .dots i {
+      width: 10px; height: 10px; border-radius: 50%;
+      display: inline-block; opacity: 0.95;
+    }
+    .dots i:nth-child(1){ background:#ff5f56; }
+    .dots i:nth-child(2){ background:#ffbd2e; }
+    .dots i:nth-child(3){ background:#27c93f; }
+    .titlebar .title {
+      flex: 1; text-align: center;
+      color: var(--ink-dim); font-size: 9px; letter-spacing: 0.04em;
+    }
+    .titlebar .badge { color: var(--ink-faint); font-size: 8.5px; }
+
+    .screen { position: relative; padding: 18px 26px 22px; }
+
+    a:link,
+    a:visited {
+      color: var(--link);
+      text-decoration-line: underline;
+      text-decoration-color: currentColor;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+    a:hover {
+      color: var(--ink-strong);
+      text-decoration-color: currentColor;
+    }
+
+    .cmd-line {
+      margin: 0 -26px 5px;
+      padding: 5px 26px;
+      background: var(--cmd-bar);
+      border-top: 1px solid var(--cmd-bar-edge);
+      border-bottom: 1px solid var(--cmd-bar-edge);
+      box-shadow: inset 0 1px 0 var(--cmd-inset);
+      white-space: nowrap;
+      font-size: 9.5px;
+    }
+    .cmd-line.endline { margin-top: 12px; }
+    .prompt-dim { color: var(--ink-dim); }
+    .prompt-dim .u,
+    .prompt-dim .sep,
+    .prompt-dim .p,
+    .prompt-dim .sh { color: inherit; }
+    .prompt-dim .sh { font-weight: 700; }
+    .cmd { color: var(--ink-dim); }
+    .cmd-key { color: var(--ink-strong); font-weight: 700; }
+    .cmd a { color: var(--ink-dim); text-decoration: none; }
+    .cmd a:hover { color: var(--accent); text-decoration: none; }
+    .cmd .str { color: var(--accent); opacity: 0.85; }
+    .cmd .flag { color: var(--accent); opacity: 0.85; }
+
+    .comment { color: var(--ink-dim); }
+
+    header { margin-bottom: 4px; }
+    .name {
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      word-spacing: -0.04em;
+      text-transform: uppercase;
+      margin: 2px 0 0;
+      color: var(--ink-strong);
+    }
+    .role {
+      margin: 0;
+      color: var(--ink-strong);
+      font-size: 11.5px;
+      letter-spacing: 0.02em;
+    }
+    .role .arrow { color: var(--accent); font-weight: 700; }
+    .role .dotsep { color: var(--ink-faint); padding: 0 6px; }
+    .contact {
+      margin-top: 7px;
+      color: var(--ink-dim);
+      font-size: 9.2px;
+      word-spacing: 0.04em;
+    }
+    .contact .v { color: var(--ink); }
+    .contact .pipe { color: var(--ink-faint); padding: 0 6px; }
+
+    section { margin-top: 13px; }
+    .out { margin-top: 4px; }
+
+    .job { margin-bottom: 9px; }
+    .job:last-child { margin-bottom: 2px; }
+    .job-head {
+      display: flex; justify-content: space-between;
+      align-items: baseline; gap: 12px;
+      border-bottom: 1px dashed var(--rule);
+      padding-bottom: 2px;
+    }
+    .job-title { font-size: 10.5px; }
+    .job-title .company { color: var(--accent); font-weight: 700; }
+    .job-title .acq { color: var(--ink-dim); }
+    .job-title .ttl { color: var(--ink-strong); }
+    .job-title .colons { color: var(--ink-faint); }
+    .job-meta {
+      font-size: 8.6px; color: var(--ink-dim);
+      white-space: nowrap; letter-spacing: 0.03em;
+    }
+    .job-context { color: var(--ink-faint); margin: 2px 0 3px; font-size: 8.7px; opacity: 0.88; }
+
+    ul.bullets { margin: 3px 0 0; padding: 0; list-style: none; }
+    ul.bullets li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 3px;
+      color: var(--ink);
+    }
+    ul.bullets li::before {
+      content: ">";
+      position: absolute; left: 2px; top: 0;
+      color: var(--accent); font-weight: 700;
+    }
+    strong { color: var(--ink-strong); font-weight: 700; }
+    code {
+      color: var(--accent);
+      background: var(--code-bg);
+      padding: 0 3px; border-radius: 3px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 3px;
+    }
+    .skill-row { display: flex; gap: 8px; align-items: baseline; margin-bottom: 0; }
+    .skill-key {
+      flex: 0 0 88px; color: var(--accent); white-space: nowrap; font-size: 9.5px;
+    }
+    .skill-val { color: var(--ink); }
+    .skill-val .b { color: var(--ink-faint); }
+
+    .edu-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .edu-row .deg { color: var(--ink-strong); }
+    .edu-row .deg .school { color: var(--accent); }
+    .edu-row .deg .colons { color: var(--ink-faint); }
+    .edu-row .sub { color: var(--ink-dim); }
+    .edu-row .meta { color: var(--ink-dim); font-size: 8.6px; white-space: nowrap; }
+
+    .cursor {
+      display: inline-block;
+      width: 8px; height: 13px;
+      background: var(--ink-strong);
+      vertical-align: text-bottom;
+      margin-left: 4px;
+    }
+    .endline { margin-top: 0; }
+
+    @page { size: Letter; margin: 0; }
+    @media print {
+      html, body {
+        background: var(--paper) !important;
+        font-size: 8.9px;
+        line-height: 1.32;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .terminal {
+        margin: 0 auto; max-width: none; width: 100%;
+        border: none; border-radius: 0; box-shadow: none;
+        min-height: 0;
+        background: var(--paper) !important;
+      }
+      .screen { padding: 0.22in 0.5in 0.12in; }
+      section { margin-top: 4px; }
+      .out { margin-top: 2px; }
+      .job { margin-bottom: 4px; }
+      .job-context { margin: 2px 0 3px; }
+      ul.bullets li { margin-bottom: 2px; }
+      .skills-grid { row-gap: 1px; }
+      .cmd-line {
+        margin-left: -0.5in;
+        margin-right: -0.5in;
+        margin-bottom: 3px;
+        padding: 4px 0.5in;
+        background: var(--cmd-bar);
+        border-top: 1px solid var(--cmd-bar-edge);
+        border-bottom: 1px solid var(--cmd-bar-edge);
+        box-shadow: none;
+      }
+      .cmd-line.endline { margin-top: 2px; }
+      .endline { margin-top: 0; }
+      .name { font-size: 34px; }
+      .job, section, .edu-row { break-inside: avoid; }
+      a { color: var(--link); }
+      .cmd-line.endline .cmd a {
+        color: var(--ink-dim);
+        text-decoration: none;
+      }
+      * { text-shadow: none !important; box-shadow: none !important; filter: none !important; }
+    }
