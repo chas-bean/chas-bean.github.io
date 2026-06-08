@@ -50,7 +50,7 @@ After HTML or print-CSS changes:
 ./scripts/generate-pdfs.sh
 ```
 
-Uses headless Chrome with a desktop viewport so PDFs match the on-screen layout (not mobile-compacted). Requires Google Chrome at the default macOS path, or set `CHROME=`.
+Uses headless Chrome with a desktop viewport. Print CSS keeps **screen spacing** (no separate compressed layout) and applies a uniform `zoom: 0.775` so the resume fits one Letter page. Requires Google Chrome at the default macOS path, or set `CHROME=`.
 
 Manual export (any theme):
 

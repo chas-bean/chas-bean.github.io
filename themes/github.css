@@ -316,51 +316,46 @@
       .cursor { animation: none !important; }
     }
 
-    /* ---- print ---- */
+    /* ---- print (screen spacing, scaled to one Letter page) ---- */
     @page { size: Letter; margin: 0; }
     @media print {
+      html {
+        zoom: 0.775;
+      }
       html, body {
         background: var(--bg-screen) !important;
-        font-size: 8.9px;
-        line-height: 1.32;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
       .terminal {
-        margin: 0 auto; max-width: none; width: 100%;
-        border: none; border-radius: 0; box-shadow: none;
+        margin: 0 auto;
+        max-width: var(--maxw);
+        width: 100%;
+        border: 1px solid var(--rule);
+        border-radius: 8px;
+        box-shadow: none;
         min-height: 0;
+        background: var(--bg-screen) !important;
       }
-      /* drop the layered transparency overlays for a light, fast PDF */
-      .terminal::before { display: none; }   /* vignette radial-gradient */
-      .terminal::after  { display: none; }   /* scanline repeating-gradient */
-      .screen { padding: 0.22in 0.5in 0.12in; }
-      section { margin-top: 4px; }
-      .out { margin-top: 2px; }
-      .job { margin-bottom: 4px; }
-      .job-context { margin: 2px 0 3px; }
-      ul.bullets li { margin-bottom: 2px; }
-      .skills-grid { row-gap: 1px; }
+      .terminal::before,
+      .terminal::after {
+        display: none;
+      }
       .cmd-line {
-        margin-left: -0.5in;
-        margin-right: -0.5in;
-        margin-bottom: 3px;
-        padding: 4px 0.5in;
-        background: var(--cmd-bar);
-        border-top: 1px solid var(--cmd-bar-edge);
-        border-bottom: 1px solid var(--cmd-bar-edge);
         box-shadow: none;
       }
-      .cmd-line.endline { margin-top: 4px; }
-      .endline { margin-top: 0; }
-      .name { font-size: 34px; }
-      /* freeze every animated element on an intentional, fully-lit frame */
-      .name, .terminal, .terminal::after, .terminal::before, .cursor {
+      .name,
+      .terminal,
+      .terminal::after,
+      .terminal::before,
+      .cursor {
         animation: none !important;
         opacity: 1 !important;
         filter: none !important;
       }
-      .job, section, .edu-row { break-inside: avoid; }
+      .edu-row {
+        break-inside: avoid;
+      }
       a {
         color: var(--link);
         text-decoration: underline;
@@ -370,12 +365,12 @@
         color: var(--fg-dim);
         text-decoration: none;
       }
-      /* no per-glyph glow in print: each text-shadow becomes a transparency
-         group the PDF viewer has to composite, which is the main load cost */
-      * { text-shadow: none !important; box-shadow: none !important; filter: none !important; }
-      .terminal { background: var(--bg-screen) !important; }
+      * {
+        box-shadow: none !important;
+        filter: none !important;
+        text-shadow: none !important;
+      }
       .name {
-        /* one tasteful, small static phosphor glow on the name only */
         text-shadow:
           0 0 4px rgba(56, 139, 253, 0.35),
           0 0 10px var(--glow) !important;
